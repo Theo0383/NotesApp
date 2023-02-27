@@ -5,8 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Initialized="OnInitialized">
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox Grid.Column="0"
+                 Margin="10"
+                 DisplayMemberPath="Title"
+                 FontSize="16"
+                 x:Name="listbox" SelectionChanged="ListBox_SelectionChanged"/>
+        <TextBox Grid.Column="1"
+                 Margin="10"
+                 Height="200"
+                 Width="300"
+                 HorizontalAlignment="Left"
+                 Background="WhiteSmoke"
+                 VerticalAlignment="Top"
+                 FontSize="16"
+                 TextWrapping="Wrap"
+                 x:Name="textBox"/>
+        <Button Grid.Column="1" 
+                Content="update" 
+                HorizontalAlignment="Left" 
+                Margin="229,217,0,0" 
+                VerticalAlignment="Top" 
+                Height="35" 
+                Width="81" 
+                Click="Button_Click"/>
     </Grid>
 </Window>

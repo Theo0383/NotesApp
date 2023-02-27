@@ -54,7 +54,17 @@ namespace DataAccess
         }
         public void SaveNew(Note note)
         {
-            string sql = $"INSERT INTO Notes(created, Title, Text) VALUES('{note.Created.ToString("yyyy-MM-dd HH:mm:ss")}', '{note.Titel}', '{note.Text}');";
+            string sql = $"INSERT INTO Notes(created, Title, Text) VALUES('{note.Created.ToString("yyyy-MM-dd HH:mm:ss")}', '{note.Title}', '{note.Text}');";
+            SqlConnection connection = new(connectionString);
+            SqlCommand command = new SqlCommand(sql, connection);
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+            connection.Dispose();
+        }
+        public void Update(Note note)
+        {
+            string sql = $"UPDATE Notes SET Text = '{note.Text}' WHERE NoteId = {note.Id}";
             SqlConnection connection = new(connectionString);
             SqlCommand command = new SqlCommand(sql, connection);
             connection.Open();

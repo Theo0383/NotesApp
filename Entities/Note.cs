@@ -11,7 +11,7 @@
         {
             Id = id;
             Created = created;
-            Titel = titel;
+            Title = titel;
             Text = text;
         }
         public Note(DateTime created, string titel, string text)
@@ -22,7 +22,7 @@
 
         public int Id { get => id; set => id = value; }
         public DateTime Created { get => created; set => created = value; }
-        public string Titel { get => titel; set => titel = value; }
+        public string Title { get => titel; set => titel = value; }
         public string Text { get => text; set => text = value; }
 
         public override string ToString()

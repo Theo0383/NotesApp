@@ -22,13 +22,33 @@ namespace GUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Note selectedNote;
         public MainWindow()
         {
             InitializeComponent();
-            Repository r = new();
-            Note n = new(DateTime.Now, "Save", "me a lot of money");
-            r.SaveNew(n);
-            var l = r.GetAllNotes();
+        }
+
+        private void OnInitialized(object sender, EventArgs e)
+        {
+            Repository repo = new();
+            List<Note> notes = repo.GetAllNotes();
+            listbox.ItemsSource = notes;
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedNote = listbox.SelectedItem as Note;
+            if(selectedNote != null)
+            {
+                textBox.Text = selectedNote.Text;
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            selectedNote.Text = textBox.Text;
+            Repository repo = new();
+            repo.Update(selectedNote);
         }
     }
 }
