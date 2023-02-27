@@ -54,7 +54,13 @@ namespace DataAccess
         }
         public void SaveNew(Note note)
         {
-
+            string sql = $"INSERT INTO Notes(created, Title, Text) VALUES('{note.Created.ToString("yyyy-MM-dd HH:mm:ss")}', '{note.Titel}', '{note.Text}');";
+            SqlConnection connection = new(connectionString);
+            SqlCommand command = new SqlCommand(sql, connection);
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+            connection.Dispose();
         }
     }
 }
