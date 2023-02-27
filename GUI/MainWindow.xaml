@@ -34,5 +34,23 @@
                 Height="35" 
                 Width="81" 
                 Click="Button_Click"/>
+        <Button Grid.Column="1" 
+                Content="Add" 
+                HorizontalAlignment="Left" 
+                Margin="442,217,0,0" 
+                VerticalAlignment="Top" 
+                Height="35" 
+                Width="81" 
+                Click="Button_Click_1"/>
+        <TextBox Grid.Column="1"
+                 Margin="10"
+                 Height="200"
+                 Width="200"
+                 HorizontalAlignment="Right"
+                 Background="WhiteSmoke"
+                 VerticalAlignment="Top"
+                 FontSize="16"
+                 TextWrapping="Wrap"
+                 x:Name="textBox2"/>
     </Grid>
 </Window>

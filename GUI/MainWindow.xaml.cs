@@ -46,9 +46,24 @@ namespace GUI
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            selectedNote.Text = textBox.Text;
-            Repository repo = new();
-            repo.Update(selectedNote);
+            if (selectedNote != null)
+            {
+                selectedNote.Text = textBox.Text;
+                Repository repo = new();
+                repo.Update(selectedNote);
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (textBox2.Text != null)
+            {
+                Repository repo = new();
+                Note note = new(DateTime.Today, textBox2.Text, "");
+                repo.SaveNew(note);
+                List<Note> notes = repo.GetAllNotes();
+                listbox.ItemsSource = notes;
+            }
         }
     }
 }
